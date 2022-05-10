@@ -1,13 +1,10 @@
 import model.Models;
-import window.login;
-
-import java.io.IOException;
-
+import window.loginWindow;
 
 public class StartSystem {
     public static void main(String[] args) {
-
-        login.start(new Models());
+        loginWindow loginWindow = new loginWindow(new Models());
+        loginWindow.displayWindow();
 
     }
 }

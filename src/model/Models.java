@@ -13,7 +13,7 @@ public class Models {
     public User[] users = new User[0];
 
 
-    public Models() {
+    public Models() { //  descp  初始化
 
         try {
             this.users = InitUsers(paths[0]);
@@ -26,7 +26,7 @@ public class Models {
 
     }
 
-    //  descp  更新List内容, 并保存到文件
+    //  descp  更新List内容, 并保存到文件 tip b: -1删除, 0更新, 1添加
     public boolean UpdateStuI(Student_I student_I, int b) throws IOException {
         if (student_I == null) {
             return false;
@@ -75,15 +75,20 @@ public class Models {
     public boolean saveStuI() throws IOException {
 
         File file = new File("src/file/I_student.txt");
+        if (!file.exists()) {
+            if(!file.createNewFile()) {
+                return false;
+            }
+        }
 
         try (FileWriter writer = new FileWriter(file);
-             BufferedWriter out = new BufferedWriter(writer)
+             BufferedWriter bw = new BufferedWriter(writer)
         ) {
 
             for (Student_I student : this.studentsI) {
-                out.write(student.getInfo() + "\r\n");
+                bw.write(student.getInfo() + "\r\n");
             }
-            out.flush(); // 注:必须flush tip 把缓存区内容压入文件
+            bw.flush(); // 注:必须flush tip 把缓存区内容压入文件
         }
 
         return true;
@@ -91,14 +96,19 @@ public class Models {
     public boolean saveStuII() throws IOException {
 
         File file = new File("src/file/II_student.txt");
+        if (!file.exists()) {
+            if(!file.createNewFile()) {
+                return false;
+            }
+        }
 
         try (FileWriter writer = new FileWriter(file);
-             BufferedWriter out = new BufferedWriter(writer)
+             BufferedWriter bw = new BufferedWriter(writer)
         ) {
             for (Student_II student : studentsII) {
-                out.write(student.getInfo() + "\r\n");
+                bw.write(student.getInfo() + "\r\n");
             }
-            out.flush(); // 注:必须flush tip 把缓存区内容压入文件
+            bw.flush(); // 注:必须flush tip 把缓存区内容压入文件
         }
 
         return true;

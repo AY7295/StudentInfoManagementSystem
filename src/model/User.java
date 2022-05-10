@@ -4,12 +4,12 @@ package model;
 // descp 系统管理人员
 public class User {
 
-    public String username;	//用户名
-    public String password;	//密码
+    public String id;	//用户名
+    public String pass;	//密码
 
-    public User(String username, String password) {
-        this.username = username;
-        this.password = password;
+    public User(String id, String pass) {
+        this.id = id;
+        this.pass = pass;
     }
 
     //tip 待进一步开发

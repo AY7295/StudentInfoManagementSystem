@@ -3,7 +3,7 @@ package model;
 import java.util.Objects;
 
 public class Student {
-    //tip 公共属性: 学号、姓名、年龄、班级、各科成绩、地址、
+    //tip 共有属性: 学号、姓名、年龄、班级、各科成绩、地址、
     public String id; //学号
     public String name; //姓名
     public int age; //年龄
@@ -71,7 +71,7 @@ public class Student {
 
         }
 
-        //descp 给 学生类的构造方法使用
+        //descp 给 学生类 的构造方法使用
         public void setAddress(String address) {
             String[] addressArray = address.split(" ");
 
