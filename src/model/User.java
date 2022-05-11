@@ -12,13 +12,4 @@ public class User {
         this.pass = pass;
     }
 
-    //tip 待进一步开发
-    public boolean isLogin = false;	//用户是否登陆
-    public boolean getIsLogin() {
-        return isLogin;
-    }
-    public void setIsLogin() {
-        this.isLogin = !this.isLogin;
-    }
-
 }

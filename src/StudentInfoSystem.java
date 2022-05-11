@@ -1,7 +1,7 @@
 import model.Models;
-import login.loginWindow;
+import interfaces.loginWindow;
 
-public class StartSystem {
+public class StudentInfoSystem {
     public static void main(String[] args) {
         new loginWindow(new Models()).displayWindow();
     }

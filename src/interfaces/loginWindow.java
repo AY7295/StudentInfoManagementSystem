@@ -1,4 +1,4 @@
-package login;
+package interfaces;
 
 import model.Models;
 import model.User;
@@ -29,7 +29,8 @@ public class loginWindow {
 class loginFrame extends JFrame {
     JLabel title ;
     TextField id ;
-    TextField pass;
+    JPasswordField pass;
+    JCheckBox check;
     Button login;
     Models models;
 
@@ -52,9 +53,12 @@ class loginFrame extends JFrame {
         p1.setSize(200,50);
 
         var p2 = new JPanel();
-        pass = new TextField(20);
+        pass = new JPasswordField(9);
         p2.add(new JLabel("Password: "), BorderLayout.WEST);
-        p2.add(pass, BorderLayout.EAST);
+        p2.add(pass, BorderLayout.CENTER);
+        check = new JCheckBox("明文");
+        check.addActionListener(new checkAction());
+        p2.add(check, BorderLayout.EAST);
         p2.setSize(200,50);
 
 
@@ -82,10 +86,21 @@ class loginFrame extends JFrame {
 
     }
 
+    private class checkAction implements ActionListener {
+        public void actionPerformed(ActionEvent e) {
+            if (check.isSelected()) {
+                pass.setEchoChar((char) 0);
+            } else {
+                pass.setEchoChar('*');
+            }
+        }
+
+    }
+
     private class LoginAction implements ActionListener { // descp 设置监听器
         public void actionPerformed(ActionEvent e) {
 
-            var u  = new User(id.getText(), pass.getText());
+            var u  = new User(id.getText(), pass.toString());
 
             switch (util.isRightUser(models.users , u)) {
                 case -1 ->   JOptionPane.showMessageDialog(null, "User not found","Error", JOptionPane.ERROR_MESSAGE);

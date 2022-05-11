@@ -1,4 +1,4 @@
-package login;
+package interfaces;
 
 import model.Models;
 
@@ -8,9 +8,7 @@ public class service {
         this.models = ms;
     }
     public void menu() {
-
-
-
+        System.out.println("1. Add new student");
 
 
     }

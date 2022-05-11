@@ -16,6 +16,7 @@ public class Models {
     public Models() { //  descp  初始化
 
         try {
+            //descp 获取文件内容
             this.users = InitUsers(paths[0]);
             this.studentsI  = InitStudent_I(paths[1]);
             this.studentsII = InitStudent_II(paths[2]);
@@ -86,7 +87,7 @@ public class Models {
         ) {
 
             for (Student_I student : this.studentsI) {
-                bw.write(student.getInfo() + "\r\n");
+                bw.write(student.getInfo() + "\r\n"); //descp  每行写入一个学生的信息
             }
             bw.flush(); // 注:必须flush tip 把缓存区内容压入文件
         }
