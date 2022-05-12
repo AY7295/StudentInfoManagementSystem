@@ -48,7 +48,7 @@ class menuFrame extends JFrame {
     Action searchButtonAction = new AbstractAction("查询") {
         @Override
         public void actionPerformed(ActionEvent e) {
-            flushPanel();
+            flushPanel(panel);
         }
     };
     Action addStudentButtonAction = new AbstractAction("添加") {
@@ -56,7 +56,7 @@ class menuFrame extends JFrame {
         public void actionPerformed(ActionEvent e) {
 
 
-            flushPanel();
+            flushPanel(panel);
         }
     };
 
@@ -113,118 +113,23 @@ class menuFrame extends JFrame {
         tB.setFloatable(true);
         add(tB, BorderLayout.NORTH);
 
-        // descp 组装 panel
-        flushPanel();
+        // descp 组装 table
+        flushPanel(panel);
 
     }
 
 
-    private void flushPanel() {
+    private void flushPanel(JPanel p) {
         var s1 = new ArrayList<Student_I>();
         var s2 = new ArrayList<Student_II>();
         var str = Objects.requireNonNull(searchBy.getSelectedItem()).toString();
         var str1 = searchText.getText();
         var str2 = Objects.requireNonNull(sortBy.getSelectedItem()).toString();
 
-        System.out.println(str + str1 + str2);
 
-        JPanel p;
-        if (Objects.requireNonNull(student.getSelectedItem()).toString().equals("研究生")) {
-            s2 = find.Student_II(str, str1, str2, models.studentsII);
-            p = fillPanelWithStudentII(s2);
-
-        }
-
-        s1 = find.Student_I(str, str1, str2, models.studentsI);
-        p = fillPanelWithStudentI(s1);
-
-        p.setVisible(true);
         add(p, BorderLayout.CENTER);
+
     }
 
-
-    private JPanel fillPanelWithStudentI(ArrayList<Student_I> student) {
-        var panel = new JPanel();
-        System.out.println(student.size());
-
-        for (var s : student) {
-            panel.add(newRowI(s));
-        }
-        return panel;
-    }
-
-    private JPanel fillPanelWithStudentII(java.util.List<Student_II> student) {
-        var panel = new JPanel();
-        System.out.println(student.size());
-        for (var s : student) {
-            panel.add(newRowII(s));
-        }
-        return panel;
-    }
-
-
-    private JPanel newRowI(Student_I s) {
-
-        var id = new JTextField(s.id);
-        var name = new JTextField(s.name);
-        var age = new JTextField(s.age);
-        var classNum = new JTextField(s.classNum);
-        var score0 = new TextField(s.scores[0]);
-        var score1 = new TextField(s.scores[1]);
-        var score2 = new TextField(s.scores[2]);
-        var score3 = new TextField(s.scores[3]);
-        var score4 = new TextField(s.scores[4]);
-        var score5 = new TextField(util.totalScore(s.scores));
-        var address = new TextField(util.getAddress(s.address));
-        var major = new TextField(s.major);
-
-        var jp = new JPanel();
-        jp.add(id);
-        jp.add(name);
-        jp.add(age);
-        jp.add(classNum);
-        jp.add(score0);
-        jp.add(score1);
-        jp.add(score2);
-        jp.add(score3);
-        jp.add(score4);
-        jp.add(address);
-        jp.add(major);
-
-        return jp;
-    }
-
-    private JPanel newRowII(Student_II s) {
-
-        var id = new JTextField(s.id);
-        var name = new JTextField(s.name);
-        var age = new JTextField(s.age);
-        var classNum = new JTextField(s.classNum);
-        var score0 = new TextField(s.scores[0]);
-        var score1 = new TextField(s.scores[1]);
-        var score2 = new TextField(s.scores[2]);
-        var score3 = new TextField(s.scores[3]);
-        var score4 = new TextField(s.scores[4]);
-        var score5 = new TextField(util.totalScore(s.scores));
-        var address = new TextField(util.getAddress(s.address));
-        var teacher = new TextField(s.teacher);
-        var direction = new TextField(s.direction);
-
-        var jp = new JPanel();
-        jp.add(id);
-        jp.add(name);
-        jp.add(age);
-        jp.add(classNum);
-        jp.add(score0);
-        jp.add(score1);
-        jp.add(score2);
-        jp.add(score3);
-        jp.add(score4);
-        jp.add(address);
-        jp.add(teacher);
-        jp.add(direction);
-
-        return jp;
-    }
 
 }
