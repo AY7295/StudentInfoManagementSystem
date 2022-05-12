@@ -12,7 +12,6 @@ import java.awt.event.ActionListener;
 
 public class loginWindow {
     Models models;
-
     public loginWindow(Models ms){
         this.models = ms;
     }
@@ -54,30 +53,26 @@ class loginFrame extends JFrame {
 
         var p2 = new JPanel();
         pass = new JPasswordField(9);
-        p2.add(new JLabel("Password: "), BorderLayout.WEST);
-        p2.add(pass, BorderLayout.CENTER);
         check = new JCheckBox("明文");
         check.addActionListener(new checkAction());
+        p2.add(new JLabel("Password: "), BorderLayout.WEST);
+        p2.add(pass, BorderLayout.CENTER);
         p2.add(check, BorderLayout.EAST);
         p2.setSize(200,50);
 
-
-
+        var p3 = new JPanel();
         login = new Button("Login");
         login.setFont(new Font("Serif", Font.BOLD, 15));
         login.setSize(50, 50);
         login.addActionListener(new LoginAction());
-        var p3 = new JPanel();
         p3.add(login);
 
         setLayout(new GridLayout(4, 1));
-
 
         add(p0, BorderLayout.CENTER);
         add(p1, BorderLayout.CENTER);
         add(p2, BorderLayout.CENTER);
         add(p3, BorderLayout.CENTER);
-
 
         setVisible(true);
         setResizable(false);
@@ -100,12 +95,16 @@ class loginFrame extends JFrame {
     private class LoginAction implements ActionListener { // descp 设置监听器
         public void actionPerformed(ActionEvent e) {
 
-            var u  = new User(id.getText(), pass.toString());
+            var u  = new User(id.getText(), new String(pass.getPassword()));
 
             switch (util.isRightUser(models.users , u)) {
                 case -1 ->   JOptionPane.showMessageDialog(null, "User not found","Error", JOptionPane.ERROR_MESSAGE);
                 case 0 ->    JOptionPane.showMessageDialog(null, "Password is wrong","Error", JOptionPane.ERROR_MESSAGE);
-                case 1 ->    new service(models).menu();
+                case 1 -> {
+                    dispose();
+                    new menuWindow(models).displayMenu();
+                }
+
             }
         }
     }
