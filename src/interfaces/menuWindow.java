@@ -19,7 +19,7 @@ public class menuWindow {
         var frame = new menuFrame(models);
 
         frame.setSize(500, 500);
-        frame.setResizable(false);
+        frame.setResizable(true);
         frame.setVisible(true);
         frame.setLocationRelativeTo(null); //descp  center the frame
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -65,11 +65,6 @@ class menuFrame extends JFrame {
     //tip 增加学生按钮
     JButton addStudentButton = new JButton(addStudentButtonAction);
 
-
-    //tip 总人数
-    JLabel totalNum = new JLabel();
-    JTextField totalNumText = new JTextField();
-
     JToolBar tB = new JToolBar("toolBar", SwingConstants.HORIZONTAL);
 
 
@@ -86,7 +81,6 @@ class menuFrame extends JFrame {
         searchBy.addItem("班级");
         tB.add(searchBy);
 
-        tB.add(searchButton);
 
         //descp 排序条件
         sortBy.addItem("学号");
@@ -98,9 +92,7 @@ class menuFrame extends JFrame {
         sortBy.addItem("成绩5");
         tB.add(sortBy);
 
-        totalNum.add(totalNumText);
-        tB.add(totalNum);
-
+        tB.add(searchButton);
         tB.add(addStudentButton);
 
         tB.setFloatable(true);

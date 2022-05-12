@@ -6,8 +6,7 @@ import model.util;
 
 import javax.swing.*;
 import java.awt.*;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
+import java.awt.event.*;
 
 
 public class loginWindow {
@@ -47,12 +46,14 @@ class loginFrame extends JFrame {
 
         var p1 = new JPanel();
         id = new TextField(20);
+        id.setText("user");
         p1.add(new JLabel("Username: "), BorderLayout.WEST);
         p1.add(id, BorderLayout.CENTER);
         p1.setSize(200,50);
 
         var p2 = new JPanel();
-        pass = new JPasswordField(9);
+        pass = new JPasswordField("user",9);
+        pass.addKeyListener(new enter());
         check = new JCheckBox("明文");
         check.addActionListener(new checkAction());
         p2.add(new JLabel("Password: "), BorderLayout.WEST);
@@ -81,6 +82,15 @@ class loginFrame extends JFrame {
 
     }
 
+    private class enter extends KeyAdapter {
+        @Override
+        public void keyReleased(KeyEvent e) {
+            if (e.getKeyCode() == KeyEvent.VK_ENTER) {
+                checkLogin(id.getText(), new String(pass.getPassword()));
+            }
+        }
+    }
+
     private class checkAction implements ActionListener {
         public void actionPerformed(ActionEvent e) {
             if (check.isSelected()) {
@@ -94,18 +104,21 @@ class loginFrame extends JFrame {
 
     private class LoginAction implements ActionListener { // descp 设置监听器
         public void actionPerformed(ActionEvent e) {
+            checkLogin(id.getText(), new String(pass.getPassword()));
+        }
+    }
 
-            var u  = new User(id.getText(), new String(pass.getPassword()));
+    private void checkLogin(String ID, String password) {
+        var u  = new User(ID, password);
 
-            switch (util.isRightUser(models.users , u)) {
-                case -1 ->   JOptionPane.showMessageDialog(null, "User not found","Error", JOptionPane.ERROR_MESSAGE);
-                case 0 ->    JOptionPane.showMessageDialog(null, "Password is wrong","Error", JOptionPane.ERROR_MESSAGE);
-                case 1 -> {
-                    dispose();
-                    new menuWindow(models).displayMenu();
-                }
-
+        switch (util.isRightUser(models.users , u)) {
+            case -1 ->   JOptionPane.showMessageDialog(null, "User not found","Error", JOptionPane.ERROR_MESSAGE);
+            case 0 ->    JOptionPane.showMessageDialog(null, "Password is wrong","Error", JOptionPane.ERROR_MESSAGE);
+            case 1 -> {
+                dispose();
+                new menuWindow(models).displayMenu();
             }
+
         }
     }
 
