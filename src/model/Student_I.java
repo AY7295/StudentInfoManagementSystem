@@ -27,14 +27,14 @@ public class Student_I extends Student {
         this.id = infos[0];
         this.name = infos[1];
         this.age = Integer.parseInt(infos[2]);
-        this.classNum = Integer.parseInt(infos[3]);
+        this.classNum = infos[3];
         this.scores = StrScoreToIntLists(infos[4]);
         this.address.setAddress(infos[5]);
         this.major = infos[6];
 
     }
 
-    public Student_I(String id, String name, int age, int classNum, int[] scores, String address ,String major) {
+    public Student_I(String id, String name, int age, String classNum, int[] scores, String address ,String major) {
         this.id = id;
         this.name = name;
         this.age = age;
@@ -52,7 +52,7 @@ public class Student_I extends Student {
     }
 
     // descp 设置和更新学生信息
-    public boolean setInfo(String id, String name, int age, int classNum,int[] scores, String address, String major){
+    public boolean setInfo(String id, String name, int age, String classNum,int[] scores, String address, String major){
 
         if (util.isScoresRight(scores, 5)){ // tip 判断成绩是否合法
             return false;

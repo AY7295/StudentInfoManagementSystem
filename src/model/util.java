@@ -28,5 +28,19 @@ public class util {
         }
         return -1;
     }
+
+    //descp get Address
+    public static String getAddress(Address a){
+        return a.province + " " + a.city + " " + a.street + " " + a.houseNmu;
+
+    }
+
+    public static int totalScore (int[] scores){
+        int sum = 0;
+        for (var i:scores){
+            sum += i;
+        }
+        return sum;
+    }
 }
 
