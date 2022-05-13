@@ -45,7 +45,7 @@ class loginFrame extends JFrame {
         p0.add(title,BorderLayout.CENTER);
 
         var p1 = new JPanel();
-        id = new TextField(20);
+        id = new TextField(11);
         id.setText("user");
         p1.add(new JLabel("Username: "), BorderLayout.WEST);
         p1.add(id, BorderLayout.CENTER);

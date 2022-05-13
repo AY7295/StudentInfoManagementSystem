@@ -14,6 +14,15 @@ public class Student {
         return this.scores[0] + " " + this.scores[1] + " " + this.scores[2] + " " + this.scores[3] + " " + this.scores[4];
     }
 
+    public String getScoreList() {
+        int total = 0;
+        for (int score : scores) {
+            total += score;
+        }
+
+        return getScoreStr()+" "+total;
+    }
+
     public boolean setScore(int[] nums){
         if (util.isScoresRight(scores, 5)){ // tip 判断成绩是否合法
             return false;

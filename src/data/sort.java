@@ -9,10 +9,10 @@ import java.util.Comparator;
 
 public class sort {
 
-    public static ArrayList<Student_I> IBy(ArrayList<Student_I> s1, String str1) {
+    public static ArrayList<Student_I> IBy(ArrayList<Student_I> s, String condition) {
         return null;
     }
-    public static ArrayList<Student_II> IIBy(ArrayList<Student_II> s1, String str1) {
+    public static ArrayList<Student_II> IIBy(ArrayList<Student_II> s, String condition) {
         return null;
     }
 }

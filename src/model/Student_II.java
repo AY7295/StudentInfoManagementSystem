@@ -51,6 +51,11 @@ public class Student_II extends Student{
         return this.id + "," + this.name + "," + this.age + "," + this.classNum + "," + getScoreStr() + "," + this.address.getAddress() + "," + this.teacher + "," + this.direction;
     }
 
+    // descp 给JTable使用
+    public String[] getRowInfo() {
+        return (this.id+" "+this.name+" "+this.age+" "+this.classNum+" "+getScoreList()+" "+this.address.getAddressStr()+" "+this.teacher+" "+this.direction).split(" ");
+    }
+
     // descp 设置和更新学生信息
     public boolean setInfo(String id, String name, int age, String classNum, int[] scores ,String address, String teacher, String direction){
 

@@ -19,6 +19,9 @@ class Address {
     public String getAddress() {
         return this.province + " " + this.city + " " + this.street + " " + this.houseNmu;
     }
+    public String getAddressStr() {
+        return this.province + "," + this.city + "," + this.street + "," + this.houseNmu;
+    }
 
     public String[] getAddressStringS() {
 
