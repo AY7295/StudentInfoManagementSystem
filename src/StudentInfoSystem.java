@@ -1,6 +1,5 @@
-import data.selectI;
-import model.Models;
 import interfaces.loginWindow;
+import model.Models;
 
 public class StudentInfoSystem {
     public static void main(String[] args) {

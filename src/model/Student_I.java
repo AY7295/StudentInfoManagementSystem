@@ -12,6 +12,7 @@ public class Student_I extends Student {
     // descp 构造方法
     public Student_I() {
     }
+
     public Student_I(String info) {
 
         if (Objects.equals(info, "")) {
@@ -34,14 +35,18 @@ public class Student_I extends Student {
 
     }
 
-    public Student_I(String id, String name, int age, String classNum, int[] scores, String address ,String major) {
-        this.id = id;
-        this.name = name;
-        this.age = age;
-        this.classNum = classNum;
-        this.scores = scores;
-        this.address.setAddress(address);
-        this.major = major;
+    public Student_I(String[] ss) {
+        this.id = ss[0];
+        this.name = ss[1];
+        this.age = Integer.parseInt(ss[2]);
+        this.classNum = ss[3];
+        int[] is = new int[5];
+        for (int i = 0; i < 5; i++) {
+            is[i] = Integer.parseInt(ss[4 + i]);
+        }
+        this.scores = is;
+        this.address.setAddress(ss[9]);
+        this.major = ss[10];
 
     }
 
@@ -53,13 +58,13 @@ public class Student_I extends Student {
 
     // descp 给JTable使用
     public String[] getRowInfo() {
-        return (this.id+" "+this.name+" "+this.age+" "+this.classNum+" "+getScoreList()+" "+this.address.getAddressStr()+" "+this.major).split(" ");
+        return (this.id + " " + this.name + " " + this.age + " " + this.classNum + " " + getScoreList() + " " + this.address.getAddressStr() + " " + this.major).split(" ");
     }
 
     // descp 设置和更新学生信息
-    public boolean setInfo(String id, String name, int age, String classNum,int[] scores, String address, String major){
+    public boolean setInfo(String id, String name, int age, String classNum, int[] scores, String address, String major) {
 
-        if (util.isScoresRight(scores, 5)){ // tip 判断成绩是否合法
+        if (util.isScoresRight(scores, 5)) { // tip 判断成绩是否合法
             return false;
         }
 

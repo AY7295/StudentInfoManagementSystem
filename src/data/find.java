@@ -16,12 +16,8 @@ public class find {
             case "班级" -> s = selectI.ByClassNum(condition, stu);
 
         }
-//        var s1 = sort.IBy(s, str1);
-        var s1 = s;
-
-        if (s1 == null) {
-            return new String[][]{};    // descp 没有找到
-        }
+        var s1 = sort.IBy(s, str1);
+        
         var ss = new String[s1.size()][12];
         for (int i = 0; i < s1.size(); i++) {
             ss[i] = s1.get(i).getRowInfo();
@@ -40,12 +36,8 @@ public class find {
             case "班级" -> s = selectII.ByClassNum(condition, stu);
 
         }
-//        var s1 = sort.IIBy(s, str1);
-        var s1 = s;
+        var s1 = sort.IIBy(s, str1);
 
-        if (s1 == null) {
-            return new String[][]{};    // descp 没有找到
-        }
         var ss = new String[s1.size()][13];
         for (int i = 0; i < s1.size(); i++) {
             ss[i] = s1.get(i).getRowInfo();
